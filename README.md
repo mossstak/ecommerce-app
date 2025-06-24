@@ -1,2 +1,1 @@
-# Ecommerce App
-## Created by Mostak Khab
+# Ecommerce App ## Mostak Khan
