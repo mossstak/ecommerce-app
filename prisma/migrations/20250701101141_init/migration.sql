@@ -1,0 +1,30 @@
+-- CreateTable
+CREATE TABLE "products" (
+    "id" SERIAL NOT NULL,
+    "productName" TEXT NOT NULL,
+    "productType" TEXT NOT NULL,
+    "roastLevel" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "imgUrl" TEXT NOT NULL,
+    "farmName" TEXT NOT NULL,
+    "farmRegion" TEXT NOT NULL,
+    "farmCountry" TEXT NOT NULL,
+    "farmAltitude" TEXT NOT NULL,
+    "producer" TEXT,
+    "varietal" TEXT NOT NULL,
+    "harvestSeason" TEXT,
+    "farmingPractice" TEXT[],
+    "farmStory" TEXT,
+    "processingMethod" TEXT NOT NULL,
+    "roastDate" TEXT NOT NULL,
+    "roastProfile" TEXT NOT NULL,
+    "tastingNotes" TEXT[],
+    "brewingRecommendation" TEXT[],
+    "weight" INTEGER[],
+    "price" DOUBLE PRECISION[],
+    "stockQuantity" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "products_pkey" PRIMARY KEY ("id")
+);

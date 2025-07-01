@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                    Int      @id @default(autoincrement())
+  productName           String
+  productType           String
+  roastLevel            String
+  description           String
+  imgUrl                String
+  farmName              String
+  farmRegion            String
+  farmCountry           String
+  farmAltitude          String
+  producer              String?
+  varietal              String
+  harvestSeason         String?
+  farmingPractice       String[]
+  farmStory             String?
+  processingMethod      String
+  roastDate             String
+  roastProfile          String
+  tastingNotes          String[]
+  brewingRecommendation String[]
+  weight                Int[]
+  price                 Float[]
+  stockQuantity         Int
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@map("products")
+}

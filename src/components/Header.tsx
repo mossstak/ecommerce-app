@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { aboutpath,homepath } from '@/paths'
+import { aboutpath,homepath, shoppath } from '@/paths'
 import  { ThemeSwticher } from "./theme/theme-switcher"
 import { buttonVariants } from './ui/button'
 
@@ -23,7 +23,7 @@ const Header = () => {
           <h1 className="text-lg font-semibold">About</h1>
         </Link>
                 <Link
-          href={aboutpath()}
+          href={shoppath()}
           className={buttonVariants({ variant: "ghost" })}
         >
           <h1 className="text-lg font-semibold">Shop</h1>
