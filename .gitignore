@@ -20,9 +20,6 @@
 # production
 /build
 
-/api/products/route.ts
-/seed/route.ts
-
 # misc
 .DS_Store
 *.pem
