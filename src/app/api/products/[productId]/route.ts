@@ -1,23 +1,28 @@
 import { PrismaClient } from '@prisma/client';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { productId: string } }
 ) {
   try {
-    const id = Number(params.productId);
+    const { productId } = params;
+    const id = Number(productId);
+    
     if (isNaN(id)) {
       return NextResponse.json({ error: 'Invalid id' }, { status: 400 });
     }
+    
     const product = await prisma.product.findUnique({
       where: { id }
     });
+    
     if (!product) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
+    
     return NextResponse.json(product);
   } catch (error) {
     console.error('API error:', error);
