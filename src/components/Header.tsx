@@ -1,12 +1,18 @@
+'use client'
+
+import { LucideShoppingCart } from 'lucide-react'
 import Link from 'next/link'
-import { aboutpath,homepath, shoppath } from '@/paths'
-import  { ThemeSwticher } from "./theme/theme-switcher"
+import { useCart } from '@/context/CartContext'
+import { aboutpath, homepath, shoppath } from '@/paths'
+import { ThemeSwticher } from './theme/theme-switcher'
 import { buttonVariants } from './ui/button'
 
 const Header = () => {
+  const { cart } = useCart()
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
   return (
-    <nav className="supports-backdrop-blur:bg-background/60 fixed left-0 right-0 top-0 z-20 border-b bg-background/95 backdrop-blur w-full flex py-2.5 px-5 justify-between">
-      <div className='flex items-center gap-x-2'>
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white p-4 shadow-md dark:bg-black">
+      <div className="flex items-center gap-x-2">
         <Link
           href={homepath()}
           className={buttonVariants({ variant: 'ghost' })}
@@ -14,19 +20,25 @@ const Header = () => {
           <h1 className="text-lg font-semibold">Ecommerce Shop</h1>
         </Link>
       </div>
-      <div className='flex items-center gap-x-2'>
-        <ThemeSwticher/>
+      <div className="flex items-center gap-x-2">
         <Link
           href={aboutpath()}
-          className={buttonVariants({ variant: "ghost" })}
+          className={buttonVariants({ variant: 'ghost' })}
         >
           <h1 className="text-lg font-semibold">About</h1>
         </Link>
-                <Link
+        <Link
           href={shoppath()}
-          className={buttonVariants({ variant: "ghost" })}
+          className={buttonVariants({ variant: 'ghost' })}
         >
           <h1 className="text-lg font-semibold">Shop</h1>
+        </Link>
+        <ThemeSwticher />
+        <Link href="/cart" className={buttonVariants({ variant: 'outline' })}>
+          <h1 className="text-lg font-semibold">
+            <LucideShoppingCart />
+            {cartCount > 0 ? ` (${cartCount})` : ''}
+          </h1>
         </Link>
       </div>
     </nav>

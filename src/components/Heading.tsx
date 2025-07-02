@@ -6,7 +6,7 @@ type HeadingProps = {
 }
 const Heading = ({ title, description }: HeadingProps) => {
   return (
-    <div className="mt-100 flex flex-col ">
+    <div>
       <h2 className="text-4xl font-bold tracking-tight text-center">{title}</h2>
 
       {description && (
